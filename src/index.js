@@ -1,26 +1,26 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from 'hexlet-pairs';
 
-const getExpression = ExpressionAndAnswer => car(ExpressionAndAnswer);
-const getAnswer = ExpressionAndAnswer => cdr(ExpressionAndAnswer);
+const getExpression = expressionAndAnswer => car(expressionAndAnswer);
+const getAnswer = expressionAndAnswer => cdr(expressionAndAnswer);
 
 export default (ruleOfGame, generateExpressionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
   console.log(ruleOfGame);
   const userName = readlineSync.question('May I have you name? ');
   console.log(`Hello, ${userName}!\n`);
-  const iter = (counter) => {
+  const iter = (attemptsCount) => {
     const finalCounter = 3;
-    if (counter === finalCounter) {
+    if (attemptsCount === finalCounter) {
       return console.log(`Congratulations, ${userName}`);
     }
-    const ExpressionAndAnswer = generateExpressionAndAnswer();
-    console.log(`Question: ${getExpression(ExpressionAndAnswer)}`);
+    const expressionAndAnswer = generateExpressionAndAnswer();
+    console.log(`Question: ${getExpression(expressionAndAnswer)}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    const trueAnswer = getAnswer(ExpressionAndAnswer);
+    const trueAnswer = getAnswer(expressionAndAnswer);
     if (userAnswer === trueAnswer) {
       console.log('Correct!');
-      return iter(counter + 1);
+      return iter(attemptsCount + 1);
     }
     console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${trueAnswer}`);
     return console.log(`Let's try again, ${userName}!`);
