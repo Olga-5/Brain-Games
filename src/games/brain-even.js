@@ -1,13 +1,13 @@
 import { cons } from 'hexlet-pairs';
-import getRandom from '../random';
+import getRandom from '../utils/random';
 
 
 const even = num => (num % 2 === 0 ? 'yes' : 'no');
 
-const generationPair = () => {
-  const question = getRandom(0, 100);
-  const trueAnswer = even(question);
-  return cons(question, trueAnswer);
+const generateExpressionAndAnswer = () => {
+  const expression = getRandom(0, 100);
+  const trueAnswer = even(expression);
+  return cons(expression, trueAnswer);
 };
 
-export default generationPair;
+export default generateExpressionAndAnswer;

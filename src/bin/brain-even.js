@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import generationPair from '../games/brain-even';
+import generateExpressionAndAnswer from '../games/brain-even';
 import runGame from '..';
 
-runGame('Answer "yes" if number even otherwise answer "no".\n')(generationPair);
+const ruleOfGame = 'Answer "yes" if number even otherwise answer "no".\n';
+runGame(ruleOfGame, generateExpressionAndAnswer);
