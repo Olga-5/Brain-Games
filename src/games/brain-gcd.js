@@ -8,12 +8,10 @@ const gcd = (a, b) => {
   return gcd(b, (a % b));
 };
 
-const generationExpressionAndAnswer = () => {
+export default () => {
   const num1 = getRandom(0, 100);
   const num2 = getRandom(0, 100);
   const expression = `${num1} ${num2}`;
   const trueAnswer = String(gcd(num1, num2));
   return cons(expression, trueAnswer);
 };
-
-export default generationExpressionAndAnswer;

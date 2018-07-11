@@ -13,10 +13,8 @@ const prime = (num) => {
   return 'yes';
 };
 
-const generateExpressionAndAnswer = () => {
+export default () => {
   const expression = getRandom(0, 50);
   const trueAnswer = prime(expression);
   return cons(expression, trueAnswer);
 };
-
-export default generateExpressionAndAnswer;

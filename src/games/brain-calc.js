@@ -1,44 +1,24 @@
-import { cons } from 'hexlet-pairs';
+import { cons, car, cdr } from 'hexlet-pairs';
 import getRandom from '../utils/random';
-import length from '../utils/length';
 
-const generateExpressionAndAnswer = () => {
+export default () => {
   const a = getRandom(0, 100);
   const b = getRandom(0, 20);
-  const mathExpression1 = `${a} + ${b}`;
-  const mathExpression2 = `${a} - ${b}`;
-  const mathExpression3 = `${a} * ${b}`;
   const numMathExpreission = getRandom(1, 3);
-  const getRandomExpression = (randomIndex) => {
-    switch (randomIndex) {
+  const getRandomExpression = (numRandomExpression) => {
+    switch (numRandomExpression) {
       case 1:
-        return mathExpression1;
+        return cons(`${a} + ${b}`, a + b);
       case 2:
-        return mathExpression2;
+        return cons(`${a} - ${b}`, a - b);
       default:
-        return mathExpression3;
+        return cons(`${a} * ${b}`, a * b);
     }
   };
-  const calculateExpression = (str) => {
-    let i = 0;
-    while (i < length(str)) {
-      switch (str[i]) {
-        case '+':
-          return a + b;
-        case '-':
-          return a - b;
-        case '*':
-          return a * b;
-        default:
-          i += 1;
-      }
-    }
-    return 'error';
-  };
+  const getExpression = randomExpression => car(randomExpression);
+  const getCalcExpression = randomExpression => cdr(randomExpression);
 
-  const expression = getRandomExpression(numMathExpreission);
-  const trueAnswer = String(calculateExpression(expression));
+  const expression = getExpression(getRandomExpression(numMathExpreission));
+  const trueAnswer = String(getCalcExpression(getRandomExpression(numMathExpreission)));
   return cons(expression, trueAnswer);
 };
-
-export default generateExpressionAndAnswer;
