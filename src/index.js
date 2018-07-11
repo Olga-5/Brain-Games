@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { car, cdr, toString } from 'hexlet-pairs';
+import { car, cdr } from 'hexlet-pairs';
 
 const getExpression = expressionAndAnswer => car(expressionAndAnswer);
 const getAnswer = expressionAndAnswer => cdr(expressionAndAnswer);
@@ -15,7 +15,6 @@ export default (ruleOfGame, generateExpressionAndAnswer) => {
       return console.log(`Congratulations, ${userName}`);
     }
     const expressionAndAnswer = generateExpressionAndAnswer();
-    console.log(toString(expressionAndAnswer));
     console.log(`Question: ${getExpression(expressionAndAnswer)}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const trueAnswer = getAnswer(expressionAndAnswer);
