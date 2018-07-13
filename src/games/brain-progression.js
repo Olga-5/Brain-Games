@@ -9,7 +9,7 @@ const generateProgression = (startItem, positionMissingItem, stepInProgression) 
     } if (positionsCount === positionMissingItem) {
       return iter(positionsCount + 1, `${resultOfGenetation}.. `, nextItem, nextItem + stepInProgression);
     }
-    return iter(positionsCount + 1, `${resultOfGenetation}${String(nextItem)} `, missingItem, nextItem + stepInProgression);
+    return iter(positionsCount + 1, `${resultOfGenetation}${nextItem} `, missingItem, nextItem + stepInProgression);
   };
   const positionFirstItem = 1;
   const initialResult = '';
