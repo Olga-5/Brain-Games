@@ -6,34 +6,25 @@ const compareNumbers = (a, b) => a - b;
 const balance = (numberAsString) => {
   const sortArray = numberAsString.split('').sort(compareNumbers).map(Number);
   const lengthArray = sortArray.length;
-  let firstItemOfArray = sortArray[0];
-  let lastItemOfArray = sortArray[lengthArray - 1];
-  if (lastItemOfArray - firstItemOfArray <= 1) {
+  const firstItemOfArray = sortArray[0];
+  const lastItemOfArray = sortArray[lengthArray - 1];
+  const permissibleValue = 1;
+  if (lastItemOfArray - firstItemOfArray <= permissibleValue) {
     return sortArray.join('');
   }
-  while (lastItemOfArray - firstItemOfArray > 1) {
-    sortArray.pop();
-    sortArray.shift();
-    lastItemOfArray -= 1;
-    firstItemOfArray += 1;
-    sortArray.push(lastItemOfArray);
-    sortArray.unshift(firstItemOfArray);
-  }
-  if (lengthArray === 4) {
-    let secondItemOfArray = sortArray[1];
-    let thirdItemOfArray = sortArray[2];
-    while (secondItemOfArray - thirdItemOfArray > 1) {
-      secondItemOfArray -= 1;
-      sortArray.splice(2, 1, secondItemOfArray);
-      thirdItemOfArray += 1;
-      sortArray.splice(1, 1, thirdItemOfArray);
+  const changeArrayItems = (currentValue, indexCurrentItem, array) => {
+    const indexFirstItemOfArray = 0;
+    if (indexCurrentItem === indexFirstItemOfArray) {
+      return currentValue + 1;
     }
-    return balance(sortArray.join(''));
-  }
-  if (lengthArray === 3) {
-    return balance(sortArray.join(''));
-  }
-  return sortArray;
+    const indexLastItemsOfArray = array.length - 1;
+    if (indexCurrentItem === indexLastItemsOfArray) {
+      return currentValue - 1;
+    }
+    return currentValue;
+  };
+  const changedArray = sortArray.map(changeArrayItems);
+  return balance(changedArray.join(''));
 };
 
 export default () => {
